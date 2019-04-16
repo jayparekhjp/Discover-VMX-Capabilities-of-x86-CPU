@@ -1,14 +1,13 @@
 # Discover-VMX-Capabilities-of-x86-CPU
 This program can read MSRs (Model Specific Register) of the given machine we can determine whether different exit controls can be turned or or not for the given processor.
 
-Gist of Assignment:
+## Gist of Assignment: \n
 This assignment focuses on finding different VMF features present in the processor by building and running a custom Linux Kernel module that queries different MSRs. The custom module will be a program written in C language and the output medium will be system logs.
 
-Prerequisites:
+## Prerequisites: \n
 A machine having a processor that has VMX features exposed and is capable of running any one of distribution/flavor of Linux. A VM is better suited for the assignment as in case of a system failure/crash, the host machine won’t get affected.
 
-
-Environment Used:
+## Environment Used: \n
 Machine: Apple MacBook Pro 13”
 Processor Type: Intel Core i7 (I7-8559U)
 Processor Speed: 2.7 GHz
@@ -16,7 +15,7 @@ Host OS: macOS Mojave 10.14.3
 Software Hypervisor: VMware Fusion
 VMOS: Ubuntu 18.04.2 LTS
 
-Build Linux Kernel:
+## Build Linux Kernel: \n
 Check if git is installed or not. If not, then install:
 		sudo apt-get install git
 Clone the linux repository:
@@ -33,15 +32,15 @@ make modules
 make modules_install
 make install
 
-Initial git commits:
+## Initial git commits: \n
 Check and store the last git commit of the official repository to compare with the output and also to put the diff on.
 		63bdf4284c38a48af21745ceb148a087b190cd21
 
-Create custom kernel module:
+## Create custom kernel module: \n
 Create C language program cmpe283-1.c to discover processor’s MSRs and determine the VMX capabilities of the processor. File content is provided in the appendix of this file.
 gedit cmpe283-1.c
 
-
+---
 
 Create Makefile to make the kernel module.
 File Content: 
@@ -65,7 +64,7 @@ dmesg
 To unload/uninstall the kernel module:
 rmmod cmpe283-1
 
-Making cmpe281-1.diff file:
+## Making cmpe281-1.diff file: \n
 Check and store the initial commit of the official Linux repository.
 git status
 	Initial commit: 63bdf4284c38a48af21745ceb148a087b190cd21
@@ -76,9 +75,9 @@ Final Commit: 89803124dfeeca9179ab0bc4398b3ce06875d634
 Make the .diff file
 git diff 63bdf4284c38a48af21745ceb148a087b190cd21 89803124dfeeca9179ab0bc4398b3ce06875d634 > cmpe283-1.diff
 
+---
 
-
-Contents of cmpe281-1.c
+## Contents of cmpe281-1.c \n
 
 /*  
  *  cmpe283-1.c - Kernel module for CMPE283 assignment 1
@@ -440,9 +439,9 @@ cleanup_module(void)
 	printk(KERN_INFO "\n Submitted by - Jay Parekh, Jainam Sheth \n");
 }
 
+---
 
-
-Output
+## Output \n
 
 [ 2536.296519] 
                
